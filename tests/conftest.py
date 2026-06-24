@@ -1,6 +1,6 @@
 import os
 
-os.environ["DATABASE_URL"] = "postgresql://voting_user:voting_pass@localhost:5432/voting_app_test"
+os.environ["DATABASE_URL"] = "postgresql://voting_user:voting_pass@localhost:5433/voting_app_test"
 
 import pytest
 from sqlalchemy import create_engine
