@@ -1,6 +1,11 @@
 import os
 
-os.environ["DATABASE_URL"] = "postgresql://voting_user:voting_pass@localhost:5433/voting_app_test"
+# Use CI-provided DATABASE_URL if available, otherwise fall back to local test database
+TEST_DATABASE_URL = os.environ.get(
+    "DATABASE_URL",
+    "postgresql://voting_user:voting_pass@localhost:5433/voting_app_test"
+)
+os.environ["DATABASE_URL"] = TEST_DATABASE_URL
 
 import pytest
 from sqlalchemy import create_engine
@@ -10,8 +15,6 @@ from fastapi.testclient import TestClient
 from app.database import Base, get_db
 from app.main import app
 from app import models  # noqa
-
-TEST_DATABASE_URL = "postgresql://voting_user:voting_pass@localhost:5433/voting_app_test"
 
 engine = create_engine(TEST_DATABASE_URL)
 TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
