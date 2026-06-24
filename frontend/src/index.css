@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #14161A;
+  --surface: #1C1F26;
+  --surface-hover: #23272F;
+  --border: #2A2E37;
+  --text: #ECEDEF;
+  --text-dim: #8A8F99;
+  --accent: #7C5CFF;
+  --accent-dim: #5A41C7;
+  --pulse: #FF6B5B;
+  --success: #3DD68C;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+button {
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+}
+
+input {
+  font-family: 'Inter', sans-serif;
+}
+
+::selection {
+  background: var(--accent);
+  color: white;
+}
+
+@keyframes pulse-flash {
+  0% {
+    background-color: var(--pulse);
+  }
+
+  100% {
+    background-color: transparent;
+  }
+}
+
+.vote-pulse {
+  animation: pulse-flash 0.8s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
